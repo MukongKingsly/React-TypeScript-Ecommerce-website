@@ -1,0 +1,36 @@
+.about-content,
+.our-mission,
+.commitment {
+  margin: 40px 0;
+}
+
+.about-content h2,
+.our-mission h2,
+.commitment h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+
+.team-member {
+  text-align: center;
+  margin: 20px;
+}
+
+.team-member h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.team-member img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
