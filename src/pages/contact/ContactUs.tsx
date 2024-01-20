@@ -1,38 +1,51 @@
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import "./contactUs.scss";
 
 function ContactUs() {
   return (
-    <Container className="d-flex justify-content-center align-items-center contactUs-container">
-      <Row>
-        <Col xs={12}>
-          <Form className="contactUs-form">
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" />
-            </Form.Group>
+    <section className="contact-us-container">
+      <div className="contact-us-content">
+        <form className="contact-us-form">
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your name"
+              autoComplete="name"
+            />
+          </div>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
+          <div className="form-group">
+            <label htmlFor="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter email"
+              autoComplete="email"
+            />
+          </div>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Subject</Form.Label>
-              <Form.Control type="text" placeholder="Enter subject" />
-            </Form.Group>
+          <div className="form-group">
+            <label htmlFor="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Enter subject" />
+          </div>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
-              <Form.Control as="textarea" rows={3} style={{ resize: "none" }} />
-            </Form.Group>
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              rows={3}
+              style={{ resize: "none" }}
+            ></textarea>
+          </div>
 
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }
 

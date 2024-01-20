@@ -1,18 +1,19 @@
-import { Row, Col, Container } from "react-bootstrap";
+import React from "react";
 import storeItems from "../../data/items.json";
-import { StoreItem } from "../../components/StoreItem";
+import { StoreItem } from "../../components/storeItem/StoreItem";
+import "./store.scss";
 
 function Store() {
   return (
-    <Container>
-      <Row md={2} xs={1} lg={3} className="g-3">
-        {storeItems.map((item: any) => (
-          <Col key={item.id}>
+    <section className="container">
+      <div className="store-items">
+        {storeItems.map((item) => (
+          <div key={item.id} className="store-item">
             <StoreItem {...item} />
-          </Col>
+          </div>
         ))}
-      </Row>
-    </Container>
+      </div>
+    </section>
   );
 }
 
