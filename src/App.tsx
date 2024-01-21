@@ -1,15 +1,15 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { Home, Store, AboutUs, ContactUs } from "./pages";
 import { Navbar } from "./components/navbar/Navbar";
-import "./app.css";
+import { Spinner } from "./components/spinner/Spinner";
+import "./app.scss";
 
 function App() {
   return (
     <ShoppingCartProvider>
-      <Suspense fallback={<Spinner animation="grow" />}>
+      <Suspense fallback={<Spinner />}>
         <Navbar />
         {/* <Container className="mb-4"> */}
         <Routes>

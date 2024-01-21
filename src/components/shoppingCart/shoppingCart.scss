@@ -20,14 +20,15 @@
     top: 0;
     right: 0;
     height: 100%;
-    width: 300px;
-    background-color: #fff;
+    width: 520px;
+    background-color: #eeeeee;
     z-index: 100;
     display: flex;
     flex-direction: column;
 
     .cart-header {
-      padding: 1rem;
+      height: var(--navbar-height);
+      padding: 0 20px;
       border-bottom: 1px solid #ccc;
       display: flex;
       justify-content: space-between;
@@ -55,6 +56,12 @@
         margin-top: 1rem;
         font-size: 1.2rem;
         font-weight: bold;
+      }
+
+      .checkout-btn {
+        max-width: 300px;
+        width: 100%;
+        margin-top: 30px;
       }
     }
   }

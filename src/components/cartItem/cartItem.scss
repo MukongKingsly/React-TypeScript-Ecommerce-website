@@ -1,12 +1,12 @@
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 10px;
+  padding: 1rem 0;
   border-bottom: 1px solid #ccc;
 
   &__image {
-    width: 125px;
+    width: 100px;
     height: 75px;
     object-fit: cover;
   }

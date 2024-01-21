@@ -1,9 +1,17 @@
 .navbar-container {
   background-color: #fff;
+  height: var(--navbar-height);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: rgb(63, 63, 63);
 }
 
 .navbar-inner {

@@ -1,16 +1,15 @@
 import React from "react";
-import "./aboutUs.css";
-import { Container } from "react-bootstrap";
+import "./aboutUs.scss";
 
 const AboutUs: React.FC = () => {
   return (
-    <Container>
-      <section>
+    <section className="container">
+      <div>
         <div>
           <h1>About Us</h1>
           <p>Our Story, Mission, and Commitment to Quality</p>
         </div>
-      </section>
+      </div>
       <section>
         <h2>Our Story</h2>
         <p>
@@ -69,7 +68,7 @@ const AboutUs: React.FC = () => {
           <p>Marketing Director</p>
         </div>
       </section>
-    </Container>
+    </section>
   );
 };
 
