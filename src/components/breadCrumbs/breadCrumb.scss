@@ -1,0 +1,34 @@
+.breadcrumb-wrapper {
+  display: flex;
+  margin: 30px auto;
+  align-items: center;
+}
+
+.breadcrumb-wrapper i {
+  margin: 0 40px;
+}
+.breadcrumb-wrapper button {
+  border: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  background-color: transparent;
+}
+.breadcrumb-wrapper button:hover {
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+@media (max-width: 767.98px) {
+  .breadcrumb-wrapper i {
+    margin: 0 20px;
+  }
+  .breadcrumb-product-title {
+    width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

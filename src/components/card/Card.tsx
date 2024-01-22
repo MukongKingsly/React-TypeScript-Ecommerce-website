@@ -1,11 +1,13 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/formatCurrency";
+import { ProductType } from "../../types/types";
 import "./card.scss";
 
 type CardProps = {
-  imageUrl: string;
+  imageUrl: any;
   title: string;
   price: number;
+  onClickImg: React.MouseEventHandler<HTMLImageElement> | undefined;
   onAddToCart?: () => void;
   onDecreaseQuantity?: () => void;
   onIncreaseQuantity?: () => void;
@@ -17,6 +19,7 @@ const Card: React.FC<CardProps> = ({
   imageUrl,
   title,
   price,
+  onClickImg,
   onAddToCart,
   onDecreaseQuantity,
   onIncreaseQuantity,
@@ -25,11 +28,19 @@ const Card: React.FC<CardProps> = ({
 }: CardProps) => {
   return (
     <div className="custom-card">
-      <img src={imageUrl} alt={title} className="card-image" />
+      <img
+        src={imageUrl}
+        alt={title}
+        className="card-image"
+        onClick={onClickImg}
+        loading="lazy"
+      />
       <div className="card-body">
         <div className="card-title">
-          <span className="title">{title}</span>
-          <span className="price text-muted">{formatCurrency(price)}</span>
+          <p className="title" title={title}>
+            {title}
+          </p>
+          <p className="price text-muted">{formatCurrency(price)}</p>
         </div>
         <div className="card-actions">
           {quantity === 0 ? (

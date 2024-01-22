@@ -3,10 +3,11 @@ import { useShoppingCart } from "../../context/ShoppingCartContext";
 import Card from "../card/Card"; // Assuming the Card component is in the same directory
 
 type StoreItemProps = {
-  id: number;
+  id: any;
   name: string;
   price: number;
   imgUrl: string;
+  onClickImg: React.MouseEventHandler<HTMLImageElement> | undefined;
 };
 
 export const StoreItem: React.FC<StoreItemProps> = ({
@@ -14,6 +15,7 @@ export const StoreItem: React.FC<StoreItemProps> = ({
   name,
   price,
   imgUrl,
+  onClickImg,
 }: StoreItemProps) => {
   const {
     getItemQuantity,
@@ -42,6 +44,7 @@ export const StoreItem: React.FC<StoreItemProps> = ({
   return (
     <Card
       imageUrl={imgUrl}
+      onClickImg={onClickImg}
       title={name}
       price={price}
       onAddToCart={handleAddToCart}

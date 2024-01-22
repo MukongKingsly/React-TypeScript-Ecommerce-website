@@ -1,35 +1,48 @@
 .custom-card {
   border-radius: 8px;
-  overflow: hidden;
+  // overflow: hidden;
   margin-bottom: 1rem;
+  padding: 15px;
+  cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.02);
+    background-color: rgb(236, 236, 236);
   }
 
   .card-image {
-    width: 100%;
-    height: 200px;
+    width: 230px;
+    height: 180px;
+    aspect-ratio: 1 / 1;
+    display: block;
+    object-position: center;
     object-fit: cover;
   }
 
   .card-body {
-    padding: 1rem;
     display: flex;
     border: none;
     outline: none;
     flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
 
     .card-title {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: baseline;
+      max-width: 250px;
       margin-bottom: 1rem;
 
       .title {
-        font-size: 1.5rem;
-        font-weight: bold;
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .price {

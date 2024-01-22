@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import storeItems from "../../data/items.json";

@@ -8,8 +8,11 @@
 
 :root {
   --navbar-height: 70px;
+  --visible-height: calc(100vh - var(--navbar-height) - 30px);
+  --container-width: 1000px;
   --azure-color: #007bff;
   --sapphire-color: #0056b3;
+  --categories-container-width: 220px;
 }
 
 * {
@@ -34,8 +37,11 @@ body {
   min-width: 320px;
 }
 
+button {
+  cursor: pointer;
+}
 .container {
-  max-width: 1000px;
+  max-width: var(--container-width);
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
@@ -54,4 +60,9 @@ body {
   &:hover {
     background-color: var(--sapphire-color);
   }
+}
+
+.errorText {
+  color: red;
+  text-align: center;
 }
