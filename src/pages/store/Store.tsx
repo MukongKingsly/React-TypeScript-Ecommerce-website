@@ -4,6 +4,7 @@ import { StoreItem } from "../../components/storeItem/StoreItem";
 import { Pagination } from "../../hooks/pagination/Pagination";
 import { BreadCrumbTrail } from "../../components/breadCrumbs/BreadCrumbTail";
 import { Spinner } from "../../components/spinner/Spinner";
+import SingleProductDetails from "../../components/singleProductDetails/SingleProductDetails";
 import { ProductType } from "../../types/types";
 import "./store.scss";
 
@@ -91,7 +92,14 @@ const Store: React.FC = () => {
     setSelectedProducts(filteredProducts);
   };
 
-  const handleImgClicked = (product: React.SetStateAction<ProductType[]>) => {
+  const handleCategoryClicked = (title: string) => {
+    setSelectedCategory(title);
+    setWhatToDisplay("allProducts");
+  };
+
+  const handleImgClicked = (
+    product: React.SetStateAction<ProductType | undefined>
+  ) => {
     setSingleProductDetails(product);
     setWhatToDisplay("singleProduct");
   };
@@ -126,7 +134,9 @@ const Store: React.FC = () => {
                   ? "active-category"
                   : ""
               }
-              onClick={() => setSelectedCategory(categories[categoryKey].title)}
+              onClick={() =>
+                handleCategoryClicked(categories[categoryKey].title)
+              }
             >
               {categories[categoryKey].title}
             </button>
@@ -159,13 +169,53 @@ const Store: React.FC = () => {
               </div>
             </>
           ) : (
-            <>
+            <div className="singleProduct">
               <BreadCrumbTrail
                 productTitle={singleProductDetails?.title!}
                 onClickHome={() => navigate("/")}
+                onClickStore={() => setWhatToDisplay("allProducts")}
               />
-              {JSON.stringify(singleProductDetails)}
-            </>
+              <img
+                src={singleProductDetails?.imgs[0]}
+                alt={singleProductDetails?.title}
+              />
+              <SingleProductDetails {...singleProductDetails} />
+              {/* {singleProductDetails?.category.toLowerCase() === "mobiles" ? (
+                <div className="mobile-details">
+                  {singleProductDetails.Brand && (
+                    <p>Brand: {singleProductDetails.Brand}</p>
+                  )}
+                  {singleProductDetails.RAM && (
+                    <p>RAM: {singleProductDetails.RAM}</p>
+                  )}
+                  {singleProductDetails.price && (
+                    <p>Price: {singleProductDetails.price}</p>
+                  )}
+                  {singleProductDetails.specs && (
+                    <p>Specs: {singleProductDetails.specs}</p>
+                  )}
+                  {singleProductDetails.reviews && (
+                    <>
+                      <h4>Reviews</h4>
+                      {singleProductDetails.reviews.map((reviewer, index) => (
+                        <div key={index} className="single-review">
+                          <p>{reviewer.name}:</p>
+                          <p>{reviewer.title}:</p>
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </div>
+              ) : (
+                <></>
+              )} */}
+
+              {/* {Object.entries(singleProductDetails).map(([key, value]) => (
+                <p>{`${key}: ${value}`}</p>
+              ))} */}
+
+              {/* {JSON.stringify(singleProductDetails)} */}
+            </div>
           )}
         </div>
       </div>
