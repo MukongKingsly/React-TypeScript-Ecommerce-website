@@ -32,7 +32,11 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       <div className="overlay" onClick={closeCart}></div>
       <div className="cart-container">
         <div className="cart-header">
-          <button className="close-button" onClick={closeCart}>
+          <button
+            className="close-button"
+            onClick={closeCart}
+            aria-label="Close cart"
+          >
             &times;
           </button>
           <div className="cart-title">Cart</div>
@@ -52,8 +56,14 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           <p className="total-amount">Total: {formatCurrency(totalAmount)}</p>
 
           <button
-            className="submit-button checkout-btn"
+            className={
+              cartItems.length === 0
+                ? "disabled-btn checkout-btn"
+                : "submit-button checkout-btn"
+            }
             onClick={handleCheckout}
+            disabled={cartItems.length === 0 ? true : false}
+            aria-label="Proceed to checkout"
           >
             Proceed to Checkout
           </button>

@@ -40,6 +40,7 @@ export const CartItem: React.FC<CartItemProps> = ({
           <button
             className="cart-item__remove-button"
             onClick={() => removeFromCart(id)}
+            aria-label="Remove from cart"
           >
             &times;
           </button>

@@ -13,9 +13,6 @@ const Store: React.FC = () => {
   const navigate = useNavigate();
   const { width } = useWindowDimensions();
   const [categories, setCategories] = useState<ProductCategories[]>([]);
-  const categoryKeys: (keyof ProductCategories)[] = Object.keys(
-    categories
-  ) as (keyof ProductCategories)[];
   const [allProducts, setAllProducts] = useState<ProductType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Mobiles");
   const [whatToDisplay, setWhatToDisplay] = useState<string>("allProducts");
@@ -128,6 +125,7 @@ const Store: React.FC = () => {
                   selectedCategory === category.title ? "active-category" : ""
                 }
                 onClick={() => handleCategoryClicked(category.title)}
+                aria-label={category.title}
               >
                 {category.title}
               </button>
@@ -151,45 +149,6 @@ const Store: React.FC = () => {
               </select>
             </>
           )}
-
-          {/* {width > 751 ? (
-            Object.keys(categories).map((categoryKey) => (
-              <button
-                key={categoryKey}
-                className={
-                  selectedCategory === categories[categoryKey].title
-                    ? "active-category"
-                    : ""
-                }
-                onClick={() =>
-                  handleCategoryClicked(categories[categoryKey].title)
-                }
-              >
-                {categories[categoryKey].title}
-              </button>
-            ))
-          ) : (
-            <>
-              <h3>Select Category</h3>
-              <select
-                className="categorySelect"
-                id="categorySelect"
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                  setSelectedCategory(e.target.value)
-                }
-                aria-label="Select Category"
-              >
-                {Object.keys(categories).map((categoryKey) => (
-                  <option
-                    key={categoryKey}
-                    value={categories[categoryKey].title}
-                  >
-                    {categories[categoryKey].title}
-                  </option>
-                ))}
-              </select>
-            </>
-          )} */}
         </div>
         <div className="productsWrapper">
           {whatToDisplay === "allProducts" ? (

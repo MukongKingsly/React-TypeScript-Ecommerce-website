@@ -6,8 +6,18 @@ import { ProductType, ReviewerType } from "../../types/types";
 import "./singleProductDetails.scss";
 
 const SingleProductDetails: React.FC<ProductType> = (productDetails) => {
-  const { Brand, RAM, price, specs, reviews, Language, Genre, title, id } =
-    productDetails;
+  const {
+    Brand,
+    RAM,
+    price,
+    specs,
+    reviews,
+    Language,
+    Genre,
+    title,
+    id,
+    imgs,
+  } = productDetails;
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -15,9 +25,10 @@ const SingleProductDetails: React.FC<ProductType> = (productDetails) => {
     removeFromCart,
   } = useShoppingCart();
   const quantity = getItemQuantity(id);
+  const imgUrl = imgs ? imgs[0] : "";
 
   const handleAddToCart = () => {
-    increaseCartQuantity(id);
+    increaseCartQuantity(id, price, title, imgUrl);
   };
 
   const handleDecreaseQuantity = () => {
@@ -25,7 +36,7 @@ const SingleProductDetails: React.FC<ProductType> = (productDetails) => {
   };
 
   const handleIncreaseQuantity = () => {
-    increaseCartQuantity(id);
+    increaseCartQuantity(id, price, title, imgUrl);
   };
 
   const handleRemoveFromCart = () => {

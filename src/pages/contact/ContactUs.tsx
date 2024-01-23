@@ -40,7 +40,7 @@ function ContactUs() {
             ></textarea>
           </div>
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" aria-label="Submit">
             Submit
           </button>
         </form>

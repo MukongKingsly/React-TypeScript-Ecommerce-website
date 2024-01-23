@@ -68,72 +68,12 @@ const Checkout: React.FC = () => {
           </div>
         </div>
 
-        <button type="submit">Place Order</button>
+        <button type="submit" aria-label="Place order">
+          Place Order
+        </button>
       </form>
     </section>
   );
 };
 
 export default Checkout;
-
-// // checkout.tsx
-// import React from "react";
-// import "./checkout.scss";
-
-// const Checkout: React.FC = () => {
-//   return (
-//     <section className="checkout-container">
-//       <h2>Checkout</h2>
-//       <form className="checkout-form">
-//         <div className="form-group">
-//           <label htmlFor="firstName">First Name</label>
-//           <input type="text" id="firstName" name="firstName" required />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="lastName">Last Name</label>
-//           <input type="text" id="lastName" name="lastName" required />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="email">Email</label>
-//           <input type="email" id="email" name="email" required />
-//         </div>
-
-//         <div className="form-group address-group">
-//           <label htmlFor="address">Address</label>
-//           <textarea id="address" name="address" required></textarea>
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="city">City</label>
-//           <input type="text" id="city" name="city" required />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="zipCode">ZIP Code</label>
-//           <input type="text" id="zipCode" name="zipCode" required />
-//         </div>
-
-//         <div className="form-group card-group">
-//           <label htmlFor="cardNumber">Card Number</label>
-//           <input type="text" id="cardNumber" name="cardNumber" required />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="expiryDate">Expiry Date</label>
-//           <input type="text" id="expiryDate" name="expiryDate" required />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="cvv">CVV</label>
-//           <input type="text" id="cvv" name="cvv" required />
-//         </div>
-
-//         <button type="submit">Place Order</button>
-//       </form>
-//     </section>
-//   );
-// };
-
-// export default Checkout;

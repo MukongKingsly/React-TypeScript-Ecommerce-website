@@ -28,7 +28,11 @@ export const BreadCrumbTrail: FC<BreadCrumbTrailProps> = ({
           fill="#0F0F0F"
         />
       </svg>
-      <button onClick={onClickProducts} className="breadCrumb-text">
+      <button
+        onClick={onClickProducts}
+        className="breadCrumb-text"
+        aria-label="Products"
+      >
         Products
       </button>
       <svg

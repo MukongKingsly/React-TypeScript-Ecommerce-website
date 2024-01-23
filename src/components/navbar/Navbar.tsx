@@ -3,6 +3,7 @@ import { useShoppingCart } from "../../context/ShoppingCartContext";
 import "./navbar.scss";
 import useWindowDimensions from "../../hooks/WindowDimension";
 import { Menu } from "../menu/Menu";
+import { Logo } from "../icons/Icons";
 
 function DesktopNavbar() {
   const { openCart, cartQuantity } = useShoppingCart();
@@ -10,7 +11,8 @@ function DesktopNavbar() {
   return (
     <nav className="navbar-container">
       <div className="navbar-inner container">
-        <NavLink to="/" className="logo">
+        <NavLink to="/" className="logo-link">
+          <Logo />
           Mukong
         </NavLink>
 
@@ -28,7 +30,11 @@ function DesktopNavbar() {
 
         <div className="nav-actions">
           {cartQuantity > 0 && (
-            <button className="cart-button" onClick={openCart}>
+            <button
+              className="cart-button"
+              onClick={openCart}
+              aria-label="Open cart"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 576 512"

@@ -94,12 +94,17 @@ export const Menu = () => {
           className="menu-toggle"
           onClick={() => setIsOpen(!isOpen)}
           id="menu-button"
+          aria-label="Menu button"
         >
           <MenuHamburger />
         </button>
         <div className="nav-actions">
           {cartQuantity > 0 && (
-            <button className="cart-button" onClick={openCart}>
+            <button
+              className="cart-button"
+              onClick={openCart}
+              aria-label="Open cart"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 576 512"
