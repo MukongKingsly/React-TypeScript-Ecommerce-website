@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import "./navbar.scss";
+import useWindowDimensions from "../../hooks/WindowDimension";
+import { Menu } from "../menu/Menu";
 
-export function Navbar() {
+function DesktopNavbar() {
   const { openCart, cartQuantity } = useShoppingCart();
 
   return (
@@ -45,3 +47,11 @@ export function Navbar() {
     </nav>
   );
 }
+
+export const Navbar = () => {
+  const { width } = useWindowDimensions();
+  if (width < 691) {
+    return <Menu />;
+  }
+  return <DesktopNavbar />;
+};

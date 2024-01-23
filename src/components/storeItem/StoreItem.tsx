@@ -3,10 +3,11 @@ import { useShoppingCart } from "../../context/ShoppingCartContext";
 import Card from "../card/Card"; // Assuming the Card component is in the same directory
 
 type StoreItemProps = {
-  id: any;
+  id: number;
   name: string;
   price: number;
   imgUrl: string;
+  title: string;
   onClickImg: React.MouseEventHandler<HTMLImageElement> | undefined;
 };
 
@@ -14,6 +15,7 @@ export const StoreItem: React.FC<StoreItemProps> = ({
   id,
   name,
   price,
+  title,
   imgUrl,
   onClickImg,
 }: StoreItemProps) => {
@@ -26,7 +28,7 @@ export const StoreItem: React.FC<StoreItemProps> = ({
   const quantity = getItemQuantity(id);
 
   const handleAddToCart = () => {
-    increaseCartQuantity(id);
+    increaseCartQuantity(id, price, title, imgUrl);
   };
 
   const handleDecreaseQuantity = () => {
@@ -34,7 +36,7 @@ export const StoreItem: React.FC<StoreItemProps> = ({
   };
 
   const handleIncreaseQuantity = () => {
-    increaseCartQuantity(id);
+    increaseCartQuantity(id, price, title, imgUrl);
   };
 
   const handleRemoveFromCart = () => {

@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.breadcrumb-wrapper i {
+.breadcrumb-wrapper svg {
   margin: 0 40px;
 }
 .breadcrumb-wrapper button {
@@ -21,14 +21,15 @@
   border-bottom: 1px solid var(--secondary-color);
 }
 
+.breadcrumb-product-title {
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 767.98px) {
-  .breadcrumb-wrapper i {
+  .breadcrumb-wrapper svg {
     margin: 0 20px;
-  }
-  .breadcrumb-product-title {
-    width: 130px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }

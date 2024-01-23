@@ -1,6 +1,7 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import { ProductType } from "../../types/types";
+import AddToCartButton from "../addToCartButton/AddToCartButton";
 import "./card.scss";
 
 type CardProps = {
@@ -42,7 +43,14 @@ const Card: React.FC<CardProps> = ({
           </p>
           <p className="price text-muted">{formatCurrency(price)}</p>
         </div>
-        <div className="card-actions">
+        <AddToCartButton
+          quantity={quantity}
+          onAddToCart={onAddToCart}
+          onDecreaseQuantity={onDecreaseQuantity}
+          onIncreaseQuantity={onIncreaseQuantity}
+          onRemove={onRemove}
+        />
+        {/* <div className="card-actions">
           {quantity === 0 ? (
             <button className="add-to-cart" onClick={onAddToCart}>
               + Add To Cart
@@ -69,7 +77,7 @@ const Card: React.FC<CardProps> = ({
               </button>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

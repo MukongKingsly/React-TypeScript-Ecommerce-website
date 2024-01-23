@@ -1,7 +1,8 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import { CartItem } from "../cartItem/CartItem";
-import storeItems from "../../data/items.json";
 import "./shoppingCart.scss";
 
 type ShoppingCartProps = {
@@ -9,7 +10,23 @@ type ShoppingCartProps = {
 };
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
+  const navigate = useNavigate();
   const { closeCart, cartItems } = useShoppingCart();
+
+  // Calculate total amount
+  const totalAmount = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const handleCheckout = () => {
+    closeCart();
+    navigate("/checkout", {
+      state: {
+        totalAmount,
+      },
+    });
+  };
 
   return (
     <section className={`shopping-cart ${isOpen ? "open" : ""}`}>
@@ -22,20 +39,25 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           <div className="cart-title">Cart</div>
         </div>
         <div className="cart-body">
-          {cartItems.map((item: any) => (
-            <CartItem key={item.id} {...item} />
+          {cartItems.map((item) => (
+            <div key={item.id}>
+              <CartItem
+                id={item.id}
+                imgUrl={item.imgUrl!}
+                price={item.price}
+                quantity={item.quantity}
+                title={item.title!}
+              />
+            </div>
           ))}
-          <p className="total-amount">
-            Total: &nbsp;
-            {formatCurrency(
-              cartItems.reduce((total, cartItem) => {
-                const storeItem = storeItems.find((i) => i.id === cartItem.id);
-                return total + (storeItem?.price || 0) * cartItem.quantity;
-              }, 0)
-            )}
-          </p>
+          <p className="total-amount">Total: {formatCurrency(totalAmount)}</p>
 
-          <button className="submit-button checkout-btn">Checkout</button>
+          <button
+            className="submit-button checkout-btn"
+            onClick={handleCheckout}
+          >
+            Proceed to Checkout
+          </button>
         </div>
       </div>
     </section>

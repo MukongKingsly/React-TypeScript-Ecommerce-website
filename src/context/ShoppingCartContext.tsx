@@ -10,7 +10,12 @@ type ShoppingCartContext = {
   openCart: () => void;
   closeCart: () => void;
   getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
+  increaseCartQuantity: (
+    id: number,
+    price: number,
+    title: string,
+    imgUrl: string
+  ) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQuantity: number;
@@ -20,6 +25,9 @@ type ShoppingCartContext = {
 type CartItem = {
   id: number;
   quantity: number;
+  price: number;
+  title?: string;
+  imgUrl?: string;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -48,11 +56,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id: number) {
+  function increaseCartQuantity(
+    id: number,
+    price: number,
+    title: string,
+    imgUrl: string
+  ) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
-        // return all our currItems and we can add a new item which has id and quantity of 1
-        return [...currItems, { id, quantity: 1 }];
+        return [...currItems, { id, quantity: 1, price, title, imgUrl }];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
@@ -68,7 +80,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function decreaseCartQuantity(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        // if qty = 1, get rid of it
         return currItems.filter((item) => item.id !== id);
       } else {
         return currItems.map((item) => {
@@ -84,7 +95,14 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function removeFromCart(id: number) {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
+      const remainingItems = currItems.filter((item) => item.id !== id);
+
+      // If no remaining items, clear title and img data
+      if (remainingItems.length === 0) {
+        return [];
+      }
+
+      return remainingItems;
     });
   }
 

@@ -3,14 +3,14 @@ import "./breadCrumb.scss";
 
 interface BreadCrumbTrailProps {
   onClickHome: MouseEventHandler;
-  onClickStore: MouseEventHandler;
+  onClickProducts: MouseEventHandler;
   productTitle: string;
 }
 
 // The BreadCrumbTrail component simply renders some anchor tags to show the navigation hierarchy.
 export const BreadCrumbTrail: FC<BreadCrumbTrailProps> = ({
   onClickHome,
-  onClickStore,
+  onClickProducts,
   productTitle,
 }) => {
   return (
@@ -30,7 +30,7 @@ export const BreadCrumbTrail: FC<BreadCrumbTrailProps> = ({
           fill="#0F0F0F"
         />
       </svg>
-      <button onClick={onClickStore}>Store</button>
+      <button onClick={onClickProducts}>Products</button>
       <svg
         width="40px"
         height="40px"

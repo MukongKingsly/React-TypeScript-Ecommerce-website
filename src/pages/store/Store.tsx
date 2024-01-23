@@ -154,6 +154,7 @@ const Store: React.FC = () => {
                       name={product.title}
                       price={product.price}
                       imgUrl={product.imgs[0]}
+                      title={product.title}
                     />
                   </div>
                 ))}
@@ -173,48 +174,14 @@ const Store: React.FC = () => {
               <BreadCrumbTrail
                 productTitle={singleProductDetails?.title!}
                 onClickHome={() => navigate("/")}
-                onClickStore={() => setWhatToDisplay("allProducts")}
+                onClickProducts={() => setWhatToDisplay("allProducts")}
               />
               <img
                 src={singleProductDetails?.imgs[0]}
                 alt={singleProductDetails?.title}
               />
-              <SingleProductDetails {...singleProductDetails} />
-              {/* {singleProductDetails?.category.toLowerCase() === "mobiles" ? (
-                <div className="mobile-details">
-                  {singleProductDetails.Brand && (
-                    <p>Brand: {singleProductDetails.Brand}</p>
-                  )}
-                  {singleProductDetails.RAM && (
-                    <p>RAM: {singleProductDetails.RAM}</p>
-                  )}
-                  {singleProductDetails.price && (
-                    <p>Price: {singleProductDetails.price}</p>
-                  )}
-                  {singleProductDetails.specs && (
-                    <p>Specs: {singleProductDetails.specs}</p>
-                  )}
-                  {singleProductDetails.reviews && (
-                    <>
-                      <h4>Reviews</h4>
-                      {singleProductDetails.reviews.map((reviewer, index) => (
-                        <div key={index} className="single-review">
-                          <p>{reviewer.name}:</p>
-                          <p>{reviewer.title}:</p>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                </div>
-              ) : (
-                <></>
-              )} */}
 
-              {/* {Object.entries(singleProductDetails).map(([key, value]) => (
-                <p>{`${key}: ${value}`}</p>
-              ))} */}
-
-              {/* {JSON.stringify(singleProductDetails)} */}
+              <SingleProductDetails {...singleProductDetails!} />
             </div>
           )}
         </div>

@@ -1,0 +1,28 @@
+.spacer {
+  height: 50px;
+  width: 100%;
+  background-color: red;
+  margin-top: 50px;
+}
+
+.single-product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 50px;
+
+  img {
+    width: 300px;
+    height: auto;
+    display: block;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  .single-review {
+    margin-bottom: 20px;
+  }
+  h4 {
+    margin-top: 15px;
+  }
+}
