@@ -5,21 +5,11 @@
   position: fixed;
   top: 0;
   z-index: 0;
-  min-width: var(--minWidth);
-  background-color: var(--navy);
+  min-width: var(--min-screen);
+  background-color: gainsboro;
   width: 100vw;
   height: var(--navbar-height);
   padding: 0 30px;
-  border-bottom: 1px solid var(--green);
-}
-
-#mobile-back-arrow-button {
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid var(--green);
 }
 
 #menu-button {
@@ -64,7 +54,7 @@
     padding: 0 40px;
     height: 60px;
     &:hover {
-      background-color: var(--white-faint);
+      background-color: var(--gainsboro);
     }
   }
   &.open {
@@ -74,8 +64,9 @@
 }
 
 #mobileNavbar {
+  background-color: rgb(240, 240, 240);
   .active-li {
-    background-color: var(--white-faint);
+    background-color: var(--gainsboro);
     color: var(--navy);
   }
 

@@ -1,6 +1,7 @@
 .navbar-container {
   background-color: #fff;
   height: var(--navbar-height);
+  min-width: var(--min-screen);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -69,5 +70,11 @@
     bottom: 0;
     right: 0;
     transform: translate(25%, 25%);
+  }
+}
+
+@media (max-width: 1051px) {
+  .navbar-inner {
+    padding: 0 40px;
   }
 }

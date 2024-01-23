@@ -20,3 +20,12 @@ export type ProductType = {
   rating?: number;
   reviews?: ReviewerType[];
 };
+
+export type ProductCategories = {
+  title: string;
+  products: {
+    title: string;
+    price: number;
+    imgs: string[];
+  }[];
+};

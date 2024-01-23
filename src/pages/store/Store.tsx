@@ -5,21 +5,15 @@ import { Pagination } from "../../hooks/pagination/Pagination";
 import { BreadCrumbTrail } from "../../components/breadCrumbs/BreadCrumbTail";
 import { Spinner } from "../../components/spinner/Spinner";
 import SingleProductDetails from "../../components/singleProductDetails/SingleProductDetails";
-import { ProductType } from "../../types/types";
+import { ProductType, ProductCategories } from "../../types/types";
+import useWindowDimensions from "../../hooks/WindowDimension";
 import "./store.scss";
-
-type CategoryType = {
-  title: string;
-  products: {
-    title: string;
-    price: number;
-    imgs: string[];
-  }[];
-}[];
+import Categories from "../../components/categories/Categories";
 
 const Store: React.FC = () => {
   const navigate = useNavigate();
-  const [categories, setCategories] = useState<CategoryType>([]);
+  const { width } = useWindowDimensions();
+  const [categories, setCategories] = useState<ProductCategories[]>([]);
   const [allProducts, setAllProducts] = useState<ProductType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Mobiles");
   const [whatToDisplay, setWhatToDisplay] = useState<string>("allProducts");
@@ -78,8 +72,6 @@ const Store: React.FC = () => {
       setCategories(data.categories);
     } catch (err: any) {
       setError(err.message);
-      console.log(err.message);
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -126,21 +118,44 @@ const Store: React.FC = () => {
         {error && <p className="errorText">{error}</p>}
         {loading && <Spinner />}
         <div className="categoriesContainer">
-          {Object.keys(categories).map((categoryKey: any) => (
-            <button
-              key={categoryKey}
-              className={
-                selectedCategory === categories[categoryKey].title
-                  ? "active-category"
-                  : ""
-              }
-              onClick={() =>
-                handleCategoryClicked(categories[categoryKey].title)
-              }
-            >
-              {categories[categoryKey].title}
-            </button>
-          ))}
+          {width > 751 ? (
+            Object.keys(categories).map((categoryKey) => (
+              <button
+                key={categoryKey}
+                className={
+                  selectedCategory === categories[categoryKey].title
+                    ? "active-category"
+                    : ""
+                }
+                onClick={() =>
+                  handleCategoryClicked(categories[categoryKey].title)
+                }
+              >
+                {categories[categoryKey].title}
+              </button>
+            ))
+          ) : (
+            <>
+              <h3>Select Category</h3>
+              <select
+                className="categorySelect"
+                id="categorySelect"
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setSelectedCategory(e.target.value)
+                }
+                aria-label="Select Category"
+              >
+                {Object.keys(categories).map((categoryKey) => (
+                  <option
+                    key={categoryKey}
+                    value={categories[categoryKey].title}
+                  >
+                    {categories[categoryKey].title}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
         </div>
         <div className="productsWrapper">
           {whatToDisplay === "allProducts" ? (

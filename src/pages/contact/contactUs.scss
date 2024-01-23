@@ -17,6 +17,7 @@
   flex-direction: column;
   padding: 20px;
   max-width: 1000px;
+  min-width: var(--min-screen);
   width: 100%;
 
   .form-group {

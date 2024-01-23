@@ -1,5 +1,6 @@
 .checkout-container {
   max-width: 600px;
+  min-width: var(--min-screen);
   margin: 0 auto;
   padding: 20px;
 
