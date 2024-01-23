@@ -10,7 +10,10 @@
     height: 75px;
     object-fit: cover;
   }
-
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
   &__details {
     flex-grow: 1;
   }
@@ -18,6 +21,8 @@
   &__name {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__quantity {
@@ -30,8 +35,14 @@
     color: #777;
   }
 
+  &__total-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   &__total {
     font-weight: bold;
+    margin-right: 10px;
   }
 
   &__remove-button {
@@ -41,4 +52,24 @@
     font-size: 1rem;
     cursor: pointer;
   }
+  @media (max-width: 991px) {
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__name {
+      margin-bottom: 0;
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+
+  // @media (max-width: 751px) {
+
+  //   &__name {
+  //     margin-bottom: 0;
+  //     max-width: 300px;
+  //     width: 100%;
+  //   }
+  // }
 }

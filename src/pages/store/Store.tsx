@@ -8,12 +8,14 @@ import SingleProductDetails from "../../components/singleProductDetails/SinglePr
 import { ProductType, ProductCategories } from "../../types/types";
 import useWindowDimensions from "../../hooks/WindowDimension";
 import "./store.scss";
-import Categories from "../../components/categories/Categories";
 
 const Store: React.FC = () => {
   const navigate = useNavigate();
   const { width } = useWindowDimensions();
   const [categories, setCategories] = useState<ProductCategories[]>([]);
+  const categoryKeys: (keyof ProductCategories)[] = Object.keys(
+    categories
+  ) as (keyof ProductCategories)[];
   const [allProducts, setAllProducts] = useState<ProductType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Mobiles");
   const [whatToDisplay, setWhatToDisplay] = useState<string>("allProducts");
@@ -119,6 +121,38 @@ const Store: React.FC = () => {
         {loading && <Spinner />}
         <div className="categoriesContainer">
           {width > 751 ? (
+            Object.values(categories).map((category) => (
+              <button
+                key={category.title}
+                className={
+                  selectedCategory === category.title ? "active-category" : ""
+                }
+                onClick={() => handleCategoryClicked(category.title)}
+              >
+                {category.title}
+              </button>
+            ))
+          ) : (
+            <>
+              <h3>Select Category</h3>
+              <select
+                className="categorySelect"
+                id="categorySelect"
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setSelectedCategory(e.target.value)
+                }
+                aria-label="Select Category"
+              >
+                {Object.values(categories).map((category) => (
+                  <option key={category.title} value={category.title}>
+                    {category.title}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+
+          {/* {width > 751 ? (
             Object.keys(categories).map((categoryKey) => (
               <button
                 key={categoryKey}
@@ -155,7 +189,7 @@ const Store: React.FC = () => {
                 ))}
               </select>
             </>
-          )}
+          )} */}
         </div>
         <div className="productsWrapper">
           {whatToDisplay === "allProducts" ? (

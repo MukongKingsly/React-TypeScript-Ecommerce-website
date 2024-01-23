@@ -25,22 +25,26 @@ export const CartItem: React.FC<CartItemProps> = ({
       <div className="img-wrapper">
         <img src={imgUrl} alt={title} className="cart-item__image" />
       </div>
-      <div className="cart-item__details">
-        <div className="cart-item__name">
-          {title}
-          {quantity > 1 && (
-            <span className="cart-item__quantity">X{quantity}</span>
-          )}
+      <div className="cart-item__wrapper">
+        <div className="cart-item__details">
+          <div className="cart-item__name">
+            {title}
+            {quantity > 1 && (
+              <span className="cart-item__quantity">X{quantity}</span>
+            )}
+          </div>
+          <p className="cart-item__price">{formatCurrency(price)}</p>
         </div>
-        <div className="cart-item__price">{formatCurrency(price)}</div>
+        <div className="cart-item__total-wrapper">
+          <p className="cart-item__total">{formatCurrency(price * quantity)}</p>
+          <button
+            className="cart-item__remove-button"
+            onClick={() => removeFromCart(id)}
+          >
+            &times;
+          </button>
+        </div>
       </div>
-      <div className="cart-item__total">{formatCurrency(price * quantity)}</div>
-      <button
-        className="cart-item__remove-button"
-        onClick={() => removeFromCart(id)}
-      >
-        &times;
-      </button>
     </div>
   );
 };
