@@ -45,7 +45,7 @@ function DesktopNavbar() {
               <div className="cart-badge">{cartQuantity}</div>
             </button>
           )}
-          <NavLink to="/account" className="nav-link">
+          <NavLink to="/login" className="nav-link">
             Account
           </NavLink>
         </div>

@@ -1,9 +1,18 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
-import { Home, Store, AboutUs, ContactUs, Checkout } from "./pages";
+import {
+  Home,
+  Store,
+  AboutUs,
+  ContactUs,
+  Checkout,
+  Login,
+  Signup,
+} from "./pages";
 import { Navbar } from "./components/navbar/Navbar";
 import { Spinner } from "./components/spinner/Spinner";
+import Footer from "./components/footer/Footer";
 import "./app.scss";
 
 function App() {
@@ -17,7 +26,10 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
+        <Footer />
       </Suspense>
     </ShoppingCartProvider>
   );
